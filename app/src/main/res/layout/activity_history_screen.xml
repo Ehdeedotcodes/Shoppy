@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HistoryScreen">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/linearHeaderHistory"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="12dp"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/historyBackArrow"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/back"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/head_history"
+                        android:layout_marginStart="42dp"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/segoe_ui_bold"/>
+
+                </LinearLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgHistoryEmptyState"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/bag_one"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="200dp"/>
+
+            <TextView
+                android:id="@+id/txtEmptyStateHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgHistoryEmptyState"
+                android:layout_centerHorizontal="true"
+                android:text="@string/empty_history"
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="16sp"
+                android:layout_marginTop="18dp"/>
+
+            <TextView
+                android:id="@+id/txtDeleteTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/items_disappear_warning"
+                android:layout_marginTop="44dp"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/segoe_ui"
+                android:textSize="16sp"
+                android:visibility="gone"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/deleteItemsRecView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="7dp"
+                android:layout_marginEnd="7dp"
+                android:layout_below="@id/txtDeleteTime"
+                android:layout_marginTop="24dp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
+        <!-- recycler view for items is here-->
+
+
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/deletAllFAB"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="44dp"
+        android:backgroundTint="@color/remove_btn_red"
+        android:src="@drawable/bin_white"
+        android:visibility="gone"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

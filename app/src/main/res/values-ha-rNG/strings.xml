@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shoppy</string>
+    <string name="load_screen_name">Shoppy</string>
+    <string name="company_name_one">by</string>
+    <string name="company_name">SWANTA</string>
+
+    <!-- Locale begins here-->
+
+    <string name="txt_empty_state_home">Jerin siyayya babu komai, danna ƙara don ƙara abu</string>
+    <string name="items_disappear_warning">Za a share abubuwa bayan sa\'o\'i 24</string>
+    <string name="empty_history">Tarihinku fanko ne</string>
+    <string name="item_name">Suna</string>
+    <string name="txt_purchased">Sayi</string>
+    <string name="item_name_two">sunan abu</string>
+    <string name="txt_price">Farashin:</string>
+    <string name="item_price">1,000</string>
+    <string name="txt_total">Jimlar:</string>
+    <string name="total_price">15,000</string>
+    <string name="price_zero">0.00</string>
+    <string name="item_count_zero">0</string>
+    <string name="total_items">5</string>
+    <string name="txt_items">:Abubuwa</string>
+    <string name="head_new_items">Sabon abu</string>
+    <string name="hint_item_name">sunan abu</string>
+    <string name="hint_item_price">Farashin</string>
+    <string name="txt_add_description">Ƙara bayanin</string>
+    <string name="txt_description">Bayani</string>
+    <string name="btn_add">Ƙara</string>
+    <string name="btn_save">Ajiye</string>
+    <string name="btn_remove">Cire</string>
+    <string name="head_history">Tarihi</string>
+    <string name="head_edit">Gyara abubuwa</string>
+    <string name="head_item_view">Abu</string>
+    <string name="txt_confirm_delete">Shin kun tabbata share tarihi</string>
+    <string name="txt_clear">Share</string>
+    <string name="txt_cancel">Soke</string>
+</resources>

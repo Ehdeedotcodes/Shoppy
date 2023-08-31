@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">Shoppy</string>
+    <string name="load_screen_name">Shoppy</string>
+    <string name="company_name_one">by</string>
+    <string name="company_name">SWANTA</string>
+
+    <!-- Locale begins here-->
+
+    <string name="txt_empty_state_home">Shopping list is empty, click add to add item</string>
+    <string name="items_disappear_warning">Items will be deleted after 24hrs</string>
+    <string name="empty_history">Your history is empty</string>
+    <string name="item_name">Name</string>
+    <string name="txt_purchased">Purchased</string>
+    <string name="item_name_two">Item Name</string>
+    <string name="txt_price">Price:</string>
+    <string name="item_price">1,000</string>
+    <string name="txt_total">Total:</string>
+    <string name="total_price">15,000</string>
+    <string name="price_zero">0.00</string>
+    <string name="item_count_zero">0</string>
+    <string name="total_items">5</string>
+    <string name="txt_items">:items</string>
+    <string name="head_new_items">New Item</string>
+    <string name="hint_item_name">Item Name</string>
+    <string name="hint_item_price">Price</string>
+    <string name="txt_add_description">Add description</string>
+    <string name="txt_description">description</string>
+    <string name="btn_add">ADD</string>
+    <string name="btn_save">SAVE</string>
+    <string name="btn_remove">REMOVE</string>
+    <string name="head_history">History</string>
+    <string name="head_edit">Edit item</string>
+    <string name="head_item_view">Item</string>
+    <string name="txt_confirm_delete">Are you sure to clear history</string>
+    <string name="txt_clear">Clear</string>
+    <string name="txt_cancel">Cancel</string>
+
+</resources>

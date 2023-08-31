@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shoppy</string>
+    <string name="load_screen_name">Shoppy</string>
+    <string name="company_name_one">by</string>
+    <string name="company_name">SWANTA</string>
+
+    <!-- Locale begins here-->
+
+    <string name="txt_empty_state_home">Ndepụta ịzụ ahịa abaghị uru, pịa tinye ka ịgbakwunye ihe</string>
+    <string name="items_disappear_warning">A ga-ehichapụ ihe mgbe awa 24 gachara</string>
+    <string name="empty_history">Akụkọ gị tọgbọ chakoo</string>
+    <string name="item_name">Aha</string>
+    <string name="txt_purchased">Zụrụ</string>
+    <string name="item_name_two">Aha ihe</string>
+    <string name="txt_price">Ọnụ ahịa:</string>
+    <string name="item_price">1,000</string>
+    <string name="txt_total">Mkpokọta:</string>
+    <string name="total_price">15,000</string>
+    <string name="price_zero">0.00</string>
+    <string name="item_count_zero">0</string>
+    <string name="total_items">5</string>
+    <string name="txt_items">:Ihe</string>
+    <string name="head_new_items">Ihe ọhụrụ</string>
+    <string name="hint_item_name">Aha ihe</string>
+    <string name="hint_item_price">Ọnụ ahịa</string>
+    <string name="txt_add_description">Tinye nkọwa</string>
+    <string name="txt_description">Nkọwa</string>
+    <string name="btn_add">Tinye</string>
+    <string name="btn_save">Chekwa</string>
+    <string name="btn_remove">Wepu</string>
+    <string name="head_history">Akụkọ ihe mere eme</string>
+    <string name="head_edit">Dezie ihe</string>
+    <string name="head_item_view">Ihe</string>
+    <string name="txt_confirm_delete">O doro anya na ị ga-ehichapụ akụkọ ihe mere eme</string>
+    <string name="txt_clear">Kpochapụ</string>
+    <string name="txt_cancel">Kagbuo</string>
+</resources>

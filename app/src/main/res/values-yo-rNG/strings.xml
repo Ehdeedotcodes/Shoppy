@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shoppy</string>
+    <string name="load_screen_name">Shoppy</string>
+    <string name="company_name_one">by</string>
+    <string name="company_name">SWANTA</string>
+
+    <!-- Locale begins here-->
+
+    <string name="txt_empty_state_home">Akojọ ohun tio wa sofo, tẹ fikun-un lati fi ohun kan kun</string>
+    <string name="items_disappear_warning">Awọn nkan yoo paarẹ lẹhin awọn wakati 24</string>
+    <string name="empty_history">Itan rẹ ti ṣofo</string>
+    <string name="item_name">Oruko</string>
+    <string name="txt_purchased">Ti ra</string>
+    <string name="item_name_two">Orukọ nkan</string>
+    <string name="txt_price">Iye owo:</string>
+    <string name="item_price">1,000</string>
+    <string name="txt_total">Lapapọ:</string>
+    <string name="total_price">15,000</string>
+    <string name="price_zero">0.00</string>
+    <string name="item_count_zero">0</string>
+    <string name="total_items">5</string>
+    <string name="txt_items">:Awọn nkan</string>
+    <string name="head_new_items">Nkan tuntun</string>
+    <string name="hint_item_name">Orukọ nkan</string>
+    <string name="hint_item_price">Iye owo</string>
+    <string name="txt_add_description">Fi apejuwe kun</string>
+    <string name="txt_description">Apejuwe</string>
+    <string name="btn_add">Fi kun</string>
+    <string name="btn_save">Fi kun</string>
+    <string name="btn_remove">Yọ kuro</string>
+    <string name="head_history">Itan</string>
+    <string name="head_edit">Ṣatunkọ nkan</string>
+    <string name="head_item_view">Nkan</string>
+    <string name="txt_confirm_delete">Ṣe o da ọ loju lati ko itan-akọọlẹ kuro</string>
+    <string name="txt_clear">Ko o</string>
+    <string name="txt_cancel">Fagilee</string>
+</resources>

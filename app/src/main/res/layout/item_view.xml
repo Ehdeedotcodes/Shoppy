@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/itemRLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/item_round_bg"
+    android:paddingStart="24dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="12dp"
+    android:paddingBottom="12dp"
+    android:layout_marginBottom="7dp">
+
+    <TextView
+        android:id="@+id/itemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/item_name"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/linEdit"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/txtPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/segoe_ui_italic"
+            android:text="@string/txt_price"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/itemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/segoe_ui"
+            android:text="@string/item_price"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linEdit"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/rounded_bg"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/edit_ic"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/edit_ic_filled_black" />
+
+    </LinearLayout>
+</RelativeLayout>

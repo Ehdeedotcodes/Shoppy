@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shoppy</string>
+    <string name="load_screen_name">Shoppy</string>
+    <string name="company_name_one">by</string>
+    <string name="company_name">SWANTA</string>
+
+    <!-- Locale begings here-->
+
+    <string name="txt_empty_state_home">La liste de courses est vide, cliquez pour ajouter un article</string>
+    <string name="items_disappear_warning">Les éléments seront supprimés après 24 heures</string>
+    <string name="empty_history">Votre historique est vide</string>
+    <string name="item_name">Nom</string>
+    <string name="txt_purchased">Acheté</string>
+    <string name="item_name_two">Nom de l\'article</string>
+    <string name="txt_price">Prix:</string>
+    <string name="item_price">1,000</string>
+    <string name="txt_total">Totale:</string>
+    <string name="total_price">15,000</string>
+    <string name="price_zero">0.00</string>
+    <string name="item_count_zero">0</string>
+    <string name="total_items">5</string>
+    <string name="txt_items">:Articles</string>
+    <string name="head_new_items">Nouvel article</string>
+    <string name="hint_item_name">Nom de l\'article</string>
+    <string name="hint_item_price">Prix</string>
+    <string name="txt_add_description">Ajouter une description</string>
+    <string name="txt_description">Description</string>
+    <string name="btn_add">Ajouter</string>
+    <string name="btn_save">Sauvegarder</string>
+    <string name="btn_remove">Retirer</string>
+    <string name="head_history">Histoire</string>
+    <string name="head_edit">Modifier l\'article</string>
+    <string name="head_item_view">Article</string>
+    <string name="txt_confirm_delete">Êtes-vous sûr d\'effacer l\'historique</string>
+    <string name="txt_clear">Clair</string>
+    <string name="txt_cancel">Annuler</string>
+</resources>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ViewItemScreen">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        android:background="@android:color/transparent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp">
+
+            <LinearLayout
+                android:id="@+id/linearHeaderHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="12dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/itemBackArrow"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/back"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/head_item_view"
+                    android:layout_marginStart="42dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/segoe_ui_bold"/>
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/itemScrnItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/item_name"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:layout_below="@id/appBarEdt"
+        android:layout_marginTop="65dp"/>
+
+    <LinearLayout
+        android:id="@+id/linearPriceTag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:layout_below="@id/itemScrnItemName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="7dp">
+
+        <TextView
+            android:id="@+id/txtPrice1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_price"
+            android:textSize="20sp"
+            android:fontFamily="@font/segoe_ui"/>
+
+        <TextView
+            android:id="@+id/txtPrice2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/item_price"
+            android:textSize="20sp"
+            android:fontFamily="@font/segoe_ui"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/head_desc2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_description"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/segoe_ui"
+        android:layout_below="@id/linearPriceTag"/>
+
+    <LinearLayout
+        android:id="@+id/linearDesc"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_below="@id/head_desc2"
+        android:background="@drawable/grey_bg"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/tvItemDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnRemove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_below="@id/linearDesc"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="150dp"
+        android:text="@string/btn_remove"
+        style="@style/removeButton"/>
+
+
+
+</RelativeLayout>

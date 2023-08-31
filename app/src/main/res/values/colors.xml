@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="app_blue">#00D3FF</color>
+    <color name="app_dark_blue">#2B889B</color>
+    <color name="item_bg_color">#E4FFEE</color>
+    <color name="edit_icon_bg">#C9E9D5</color>
+    <color name="remove_btn_red">#FF0A0A</color>
+    <color name="chip_color">#2BD9D9D9</color>
+    <color name="light_grey">#80EFEFEF</color>
+    <color name="light_red">#40FF0A0A</color>
+    <color name="green">#026B0D</color>
+
+    <!-- dark mode colors -->
+
+    <color name="dark_bg_color">#001114</color>
+    <color name="item_color_dark">#992FA25E</color>
+    <color name="desc_bg_dark">#993A4548</color>
+    <color name="edit_icon_dark">#2E7F4F</color>
+    <color name="purchase_green">#00FF1B</color>
+    <color name="bottom_line_grey">#D5D5D5</color>
+</resources>

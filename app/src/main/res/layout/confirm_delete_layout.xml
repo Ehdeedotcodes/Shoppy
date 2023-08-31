@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg">
+
+    <ImageView
+        android:id="@+id/ivBin"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/bin"
+        android:layout_marginTop="24dp"
+        android:layout_centerHorizontal="true"
+        android:background="@android:color/transparent"/>
+
+    <TextView
+        android:id="@+id/txtConfirmDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_confirm_delete"
+        android:layout_below="@id/ivBin"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:background="@android:color/transparent"/>
+
+    <View
+        android:id="@+id/topLine"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/txtConfirmDelete"
+        android:background="@color/light_grey"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="7dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearActionBTN"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:layout_below="@id/topLine"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="7dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:gravity="center_horizontal"
+        android:background="@android:color/transparent">
+
+        <LinearLayout
+            android:id="@+id/linearClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="65dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_clear"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="50dp"
+            android:background="@color/light_grey"/>
+
+        <LinearLayout
+            android:id="@+id/linearCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="65dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/transparent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_cancel"
+                android:textSize="16sp"
+                android:background="@android:color/transparent"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

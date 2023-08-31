@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditItemScreen">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp">
+
+            <LinearLayout
+                android:id="@+id/linearHeaderHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="12dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/historyBackArrow"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/back"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/head_edit"
+                    android:layout_marginStart="42dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/segoe_ui_bold"/>
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBarEdt"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="125dp"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox">
+
+        <EditText
+            android:id="@+id/edtNameOfItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/item_name_two"
+            android:fontFamily="@font/segoe_ui"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutPrice"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtLayoutName"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox">
+
+        <EditText
+            android:id="@+id/edtPriceOfItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_price"
+            android:fontFamily="@font/segoe_ui"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/head_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_description"
+        android:layout_below="@id/edtLayoutPrice"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/segoe_ui"/>
+
+    <LinearLayout
+        android:id="@+id/linearDesc"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_below="@id/head_desc"
+        android:background="@drawable/grey_bg"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="12dp">
+
+        <EditText
+            android:id="@+id/descEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_add_description"
+            android:background="@android:color/transparent"
+            android:maxLines="5"
+            android:fontFamily="@font/segoe_ui"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSaveEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_below="@id/linearDesc"
+        android:layout_marginBottom="7dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/btn_save"
+        style="@style/appButtons"/>
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/deleteRLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="7dp"
+    android:background="@drawable/item_round_bg"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp">
+
+    <TextView
+        android:id="@+id/delItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:text="@string/item_name"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:id="@+id/linearPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/delItemName"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="7dp"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <TextView
+            android:id="@+id/txtdelPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/segoe_ui_italic"
+            android:background="@android:color/transparent"
+            android:text="@string/txt_price"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/delItemPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="7dp"
+            android:fontFamily="@font/segoe_ui"
+            android:background="@android:color/transparent"
+            android:text="@string/item_price"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txtPurchased"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/segoe_ui_bold"
+        android:background="@android:color/transparent"
+        android:text="@string/txt_purchased"
+        android:textColor="@color/purchase_green"
+        android:textSize="16sp" />
+</RelativeLayout>

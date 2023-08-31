@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewItemScreen">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarEdt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="0dp"
+        android:background="@android:color/transparent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp">
+
+            <LinearLayout
+                android:id="@+id/linearHeaderHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                android:layout_marginTop="12dp"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+                <ImageView
+                    android:id="@+id/newItemBackArrow"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/back"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/head_new_items"
+                    android:layout_marginStart="42dp"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/segoe_ui_bold"/>
+
+            </LinearLayout>
+
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/appBarEdt"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="80dp"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox">
+
+        <EditText
+            android:id="@+id/newNameOfItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/item_name_two"
+            android:fontFamily="@font/segoe_ui"
+            android:maxLength="18"
+            android:inputType="text"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/edtLayoutPrice"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtLayoutName"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox">
+
+        <EditText
+            android:id="@+id/newPriceOfItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_price"
+            android:fontFamily="@font/segoe_ui"
+            android:inputType="number"/>
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/head_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_description"
+        android:layout_below="@id/edtLayoutPrice"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:fontFamily="@font/segoe_ui"/>
+
+    <LinearLayout
+        android:id="@+id/linearDesc"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_below="@id/head_desc"
+        android:background="@drawable/grey_bg"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="12dp"
+        android:layout_marginTop="12dp">
+
+        <EditText
+            android:id="@+id/descEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/txt_add_description"
+            android:background="@android:color/transparent"
+            android:maxLines="5"
+            android:fontFamily="@font/segoe_ui"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="24dp"
+        android:layout_below="@+id/linearDesc"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="50dp"
+        android:text="@string/btn_add"
+        android:background="@drawable/button_bg"/>
+
+
+</RelativeLayout>
