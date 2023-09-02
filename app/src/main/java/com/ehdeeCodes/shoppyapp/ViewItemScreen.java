@@ -2,12 +2,10 @@ package com.ehdeeCodes.shoppyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,17 +13,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ehdeeCodes.shoppyapp.adapters.ItemAdapter;
 
 import controller.ItemController;
 import model.ItemModel;
-import model.ModelDB;
 
 public class ViewItemScreen extends AppCompatActivity implements DarkMode{
 
-    private ImageView itemViewBackIMG;
+    private ImageView itemViewBackBTN;
     private TextView itemName, itemPrice, itemDesc;
     private Button removeItemBTN;
     private ViewModelProvider viewModelProvider;
@@ -35,6 +31,13 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
     private LinearLayout descBackground;
 
     private int itemPosition;
+
+    //return back home activity on back button pressed
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(ViewItemScreen.this, HomeScreen.class));
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +49,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
         itemController = viewModelProvider.get(ItemController.class);
 
         //binding to ui components
-        itemViewBackIMG = findViewById(R.id.itemBackArrow);
+        itemViewBackBTN = findViewById(R.id.itemBackArrow);
         itemName = findViewById(R.id.itemScrnItemName);
         itemPrice = findViewById(R.id.txtPrice2);
         itemDesc = findViewById(R.id.tvItemDesc);
@@ -85,7 +88,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
             }
         });
 
-        itemViewBackIMG.setOnClickListener(new View.OnClickListener() {
+        itemViewBackBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ViewItemScreen.this, HomeScreen.class));
@@ -111,7 +114,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
     public void setIconsWhite() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
-            itemViewBackIMG.setImageDrawable(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.back_white));
+            itemViewBackBTN.setImageDrawable(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.back_white));
             descBackground.setBackground(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.grey_bg_dark));
         }
     }

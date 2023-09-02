@@ -41,6 +41,13 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
 
     private TextView txtEmpty, txtDelTime;
 
+    //return previous activity if back is pressed
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(HistoryScreen.this, HomeScreen.class);
+        startActivity(intent);
+        finish();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +122,8 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
                 finish();
             }
         });
+
+
 
         //*method to set empty state
         // check if history is empty set empty images to screen

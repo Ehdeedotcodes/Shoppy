@@ -33,6 +33,13 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
 //    ArrayList<ItemModel> newItemArray = new ArrayList<>();
 
     @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(NewItemScreen.this, HomeScreen.class);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item_screen);

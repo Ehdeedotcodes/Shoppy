@@ -31,6 +31,12 @@ public class EditItemScreen extends AppCompatActivity implements DarkMode{
     private int itemPosition;
 
     @Override
+    public void onBackPressed() {
+        startActivity(new Intent(EditItemScreen.this, HomeScreen.class));
+        finish();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_item_screen);
