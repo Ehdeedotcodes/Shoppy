@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    style="@style/app_backgrounds">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:elevation="0dp">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -18,7 +18,8 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                style="@style/app_backgrounds">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -50,7 +51,7 @@
                 android:id="@+id/appBarBottomLine"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:backgroundTint="@color/bottom_line_grey"
+                android:background="@color/light_grey"
                 android:layout_gravity="bottom"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

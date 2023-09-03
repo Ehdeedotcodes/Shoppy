@@ -138,7 +138,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
             historyBTN.setImageDrawable(AppCompatResources.getDrawable(HomeScreen.this, R.drawable.history_white));
-            appBarBottomLine.setBackgroundColor(getResources().getColor(R.color.bottom_line_grey));
+            appBarBottomLine.setBackgroundColor(getResources().getColor(R.color.dark_grey));
         }
     }
 
