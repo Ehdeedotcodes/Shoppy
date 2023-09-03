@@ -200,27 +200,15 @@ public class ItemController extends ViewModel {
 
     //edit item name
     public void editItemName(Context context, ItemModel itemModel, String newName){
-        boolean updateSuccess = modelDB.updateItemName(itemModel, newName, context);
-        if (updateSuccess){
-            Log.d("name edit status", "name updated successfully");
-        }
-        else Log.d("name edit error", "editItemName: " + "failed");
+        modelDB.updateItemName(itemModel, newName, context); //update name in database
     }
 
     public void editItemPrice(Context context, ItemModel itemModel, int newPrice){
-        boolean updateSuccess = modelDB.updateItemPrice(itemModel, newPrice, context);
-        if (updateSuccess){
-            Log.d("price edit status", "price updated successfully");
-        }
-        else Log.d("price edit error", "editItemName: " + "failed");
+        modelDB.updateItemPrice(itemModel, newPrice, context);
     }
 
     public void editItemDesc(Context context, ItemModel itemModel, String newDescription){
-        boolean updateSuccess = modelDB.updateItemDesc(itemModel, newDescription, context);
-        if (updateSuccess){
-            Log.d("description edit status", "desc updated successfully");
-        }
-        else Log.d("description edit error", "editItemName: " + "failed");
+        modelDB.updateItemDesc(itemModel, newDescription, context);
     }
 
     //check if edt text fields changed

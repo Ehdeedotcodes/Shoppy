@@ -54,7 +54,6 @@ public class Database extends SQLiteOpenHelper{
         int PRICE = Integer.parseInt(deletedItemModel.getPrice());
         long TIME = deletedItemModel.getTimeDeleted();
 
-        //trigger to add here
         ContentValues cv = new ContentValues();
 
         cv.put("UUID", deletedItemModel.getId());
@@ -128,45 +127,43 @@ public class Database extends SQLiteOpenHelper{
     /*
     * update items in table
     * item name*/
-    public boolean updateName( ItemModel itemModel ,String newName){
+    public void updateName( ItemModel itemModel ,String newName){
         SQLiteDatabase table = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
         String uuid = itemModel.getID();
+        ContentValues cv = new ContentValues();
 
         cv.put("NAME", newName);
-//        String updateQuery = "UPDATE " + table + " SET NAME = " + newName + " WHERE " + itemID + " = " + itemModel.getID();
-//
-//        table.execSQL(updateQuery, null);
+        String updateQuery = "UPDATE " + itemTable + " SET NAME = " + newName + " WHERE " + itemID + " = " + uuid;
 
-        return table.update(itemTable, cv, itemID + " = ?", new String[]{uuid}) > 0;
+//        table.execSQL(updateQuery);
+        table.update(itemTable, cv, itemID + " = ?", new String[]{uuid});
     }
 
     //update item price in database
-    public boolean updatePrice( ItemModel itemModel ,int newPrice){
+    public void updatePrice( ItemModel itemModel ,int newPrice){
         SQLiteDatabase table = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
         String uuid = itemModel.getID();
+        ContentValues cv = new ContentValues();
+
+        String updateQuery = "UPDATE " + itemTable + " SET PRICE = " + newPrice + " WHERE " + itemID + " = " + uuid;
 
         cv.put("PRICE", newPrice);
-//        String updateQuery = "UPDATE " + itemTable + " SET PRICE = " + newPrice + " WHERE " + itemID + " = " + itemModel.getID();
-//
-//        itemTable.execSQL(updateQuery, null);
 
-        return table.update(itemTable, cv, itemID + " = ?", new String[]{uuid}) > 0;
-
+//        table.execSQL(updateQuery);
+        table.update(itemTable, cv, itemID + " = ?", new String[]{uuid});
     }
 
     //update item description in database
-    public boolean updateDesc( ItemModel itemModel ,String newDesc){
+    public void updateDesc( ItemModel itemModel ,String newDesc){
         SQLiteDatabase table = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
         String uuid = itemModel.getID();
+        ContentValues cv = new ContentValues();
 
+        String updateQuery = "UPDATE " + itemTable + " SET DESCRIPTION = " + newDesc + " WHERE " + itemID + " = " + uuid;
         cv.put("DESCRIPTION", newDesc);
-//        String updateQuery = "UPDATE " + itemTable + " SET DESCRIPTION = " + newDesc + " WHERE " + itemID + " = " + itemModel.getID();
-//        itemTable.execSQL(updateQuery, null);
 
-        return table.update(itemTable, cv, itemID + " = ?", new String[]{uuid}) > 0;
+//        table.execSQL(updateQuery);
+        table.update(itemTable, cv, itemID + " = ?", new String[]{uuid});
     }
 
     //getAllItemsAdded

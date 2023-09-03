@@ -114,22 +114,21 @@ public class ModelDB implements ModelInterface{
     }
 
     // methods to edit items name in data base
-    public boolean updateItemName(ItemModel itemModel, String newName, Context context){
+    public void updateItemName(ItemModel itemModel, String newName, Context context){
         Database database = new Database(context);
-        return database.updateName(itemModel, newName);
+        database.updateName(itemModel, newName);
     }
 
     // methods to edit items price in data base
-    public boolean updateItemPrice(ItemModel itemModel, int newPrice, Context context){
+    public void updateItemPrice(ItemModel itemModel, int newPrice, Context context){
         Database database = new Database(context);
-        return database.updatePrice(itemModel, newPrice);
-
+        database.updatePrice(itemModel, newPrice);
     }
 
     // methods to edit items description in data base
-    public boolean updateItemDesc(ItemModel itemModel, String newDesc, Context context){
+    public void updateItemDesc(ItemModel itemModel, String newDesc, Context context){
         Database database = new Database(context);
-        return database.updateDesc(itemModel, newDesc);
+        database.updateDesc(itemModel, newDesc);
     }
 
     // clear history table

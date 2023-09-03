@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import controller.ItemController;
+import model.ItemModel;
 
 public class EditItemScreen extends AppCompatActivity implements DarkMode{
 
@@ -61,39 +62,31 @@ public class EditItemScreen extends AppCompatActivity implements DarkMode{
             @Override
             public void onClick(View view) {
 
-                //check if any changes have been made to item name
-                if (itemController.isNameChanged(itemName, itemController.itemModelReturned(itemPosition))){
-                    String newName = itemName.getText().toString();
-                    itemController.editItemName(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newName);
-                    Toast.makeText(EditItemScreen.this, "item updated", Toast.LENGTH_SHORT).show();
-                }
-                else if (itemController.isPriceChanged(itemPrice, itemController.itemModelReturned(itemPosition))){
-                    int newPrice = Integer.parseInt(itemPrice.getText().toString());
-                    itemController.editItemPrice(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newPrice);
-                    Toast.makeText(EditItemScreen.this, "item updated", Toast.LENGTH_SHORT).show();
-                }
-                else if (itemController.isDescChanged(itemDesc, itemController.itemModelReturned(itemPosition))){
-                    String newDesc = itemDesc.getText().toString();
-                    itemController.editItemDesc(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newDesc);
-                    Toast.makeText(EditItemScreen.this, "item updated", Toast.LENGTH_SHORT).show();
-                }
-                else if (itemController.isNameChanged(itemName, itemController.itemModelReturned(itemPosition)) &&
-                        itemController.isPriceChanged(itemPrice, itemController.itemModelReturned(itemPosition)) &&
-                        itemController.isDescChanged(itemDesc, itemController.itemModelReturned(itemPosition))){
+                boolean nameChanged = itemController.isNameChanged(itemName, itemController.itemModelReturned(itemPosition));
+                boolean priceChanged = itemController.isPriceChanged(itemPrice, itemController.itemModelReturned(itemPosition));
+                boolean descChanged = itemController.isDescChanged(itemDesc, itemController.itemModelReturned(itemPosition));
 
-                    String newName = itemName.getText().toString();
-                    int newPrice = Integer.parseInt(itemPrice.getText().toString());
-                    String newDesc = itemDesc.getText().toString();
+                if (!nameChanged || !priceChanged || !descChanged) {
+                    //check if name has been changed
+                    if (!nameChanged) {
+                        String newName = itemName.getText().toString();
+                        itemController.editItemName(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newName);
+                    }
 
-                    itemController.editItemName(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newName);
-                    itemController.editItemPrice(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newPrice);
-                    itemController.editItemDesc(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newDesc);
+                    //check if price has been changed
+                    if (!priceChanged) {
+                        int newPrice = Integer.parseInt(itemPrice.getText().toString());
+                        itemController.editItemPrice(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newPrice);
+                    }
 
-                    Log.d("all items edited", "onClick: " + "all items edited");
+                    //check if description has been changed
+                    if (!descChanged) {
+                        String newDesc = itemDesc.getText().toString();
+                        itemController.editItemDesc(EditItemScreen.this, itemController.itemModelReturned(itemPosition), newDesc);
+                    }
 
-                }
-                else {
-                    Log.d("Edit item status", "nothing edited");
+                    //return back to home screen
+                    startActivity(new Intent(EditItemScreen.this, HomeScreen.class));
                 }
 
             }
