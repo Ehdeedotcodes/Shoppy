@@ -51,7 +51,7 @@
                 android:id="@+id/appBarBottomLine"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:backgroundTint="@color/bottom_line_grey"
+                android:background="@color/light_grey"
                 android:layout_gravity="bottom"/>
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>

@@ -115,6 +115,7 @@
             android:id="@+id/tvItemDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="16sp"
             android:background="@android:color/transparent"/>
 
     </LinearLayout>

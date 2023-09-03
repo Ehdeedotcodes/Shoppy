@@ -20,5 +20,5 @@
     <color name="desc_bg_dark">#993A4548</color>
     <color name="edit_icon_dark">#2E7F4F</color>
     <color name="purchase_green">#00FF1B</color>
-    <color name="bottom_line_grey">#D5D5D5</color>
+    <color name="dark_grey">#809D9C9C</color>
 </resources>
