@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ViewItemScreen">
+    tools:context=".ViewItemScreen"
+    style="@style/app_backgrounds">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarEdt"
@@ -121,7 +122,7 @@
     <Button
         android:id="@+id/btnRemove"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:layout_marginHorizontal="24dp"
         android:layout_below="@id/linearDesc"
         android:layout_marginTop="80dp"
