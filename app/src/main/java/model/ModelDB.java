@@ -14,9 +14,7 @@ public class ModelDB implements ModelInterface{
     private static ModelDB instance;
 
     //constructor
-//    public  ModelDB(Context context){
-//        this.context = context;
-//    }
+
     public  ModelDB(){}
 
     //Singleton pattern
@@ -164,7 +162,6 @@ public class ModelDB implements ModelInterface{
         }
         return true;
 
-//        database.addToHistory(deletedItemModel);
     }
 
     @Override
@@ -179,7 +176,6 @@ public class ModelDB implements ModelInterface{
             return true;
         }else {
             Log.d("del stats from model", "remove failed");
-//            setHistoryList(context);
             return false;
         }
     }
