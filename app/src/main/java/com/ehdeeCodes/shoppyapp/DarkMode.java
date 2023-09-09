@@ -1,5 +1,5 @@
 package com.ehdeeCodes.shoppyapp;
 
 public interface DarkMode {
-    public void setIconsWhite();
+    public void setIconsOnDarkMode();
 }

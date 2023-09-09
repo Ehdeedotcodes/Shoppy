@@ -15,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ehdeeCodes.shoppyapp.adapters.ItemAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -83,7 +82,9 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
         appBarBottomLine = findViewById(R.id.appBarBottomLine);
 
         //set icons to white on Dark theme activated
-        setIconsWhite();
+        setIconsOnDarkMode();
+
+
 
 
         viewModelProvider = new ViewModelProvider(this);
@@ -114,6 +115,13 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
             }
         });
 
+        itemRecView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                //TODO: work on scroll behavior to collapse FAB
+            }
+        });
+
         //setting empty state
         isItemsEmpty = checkIfListEmpty(imgEmptyState,txtTotalPrice, txtTotalItems, txtEmptyState);
 
@@ -125,16 +133,11 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
 
     }
 
-    //method to set item background on dark mode
-    public void setItemBackgroundDarkMode(){
-
-    }
-
 
 
     //check if dark screen is activated
     @Override
-    public void setIconsWhite(){
+    public void setIconsOnDarkMode(){
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
             historyBTN.setImageDrawable(AppCompatResources.getDrawable(HomeScreen.this, R.drawable.history_white));

@@ -104,7 +104,8 @@
                 android:layout_marginEnd="7dp"
                 android:layout_below="@id/txtDeleteTime"
                 android:layout_marginTop="24dp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:overScrollMode="never"/>
 
         </RelativeLayout>
 
@@ -121,6 +122,7 @@
         android:layout_marginBottom="44dp"
         android:backgroundTint="@color/remove_btn_red"
         android:src="@drawable/bin_white"
-        android:visibility="gone"/>
+        android:visibility="gone"
+        app:layout_behavior="controller.HideFabOnScroll"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

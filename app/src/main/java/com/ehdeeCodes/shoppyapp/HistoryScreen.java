@@ -3,7 +3,6 @@ package com.ehdeeCodes.shoppyapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.constraintlayout.widget.Constraints;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,11 +15,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ehdeeCodes.shoppyapp.adapters.HistoryAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -36,10 +34,10 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
     private ViewModelProvider viewModelProvider;
     private RecyclerView historyRecyView;
     private FloatingActionButton deleteAllFAB;
-    private Dialog dialog;
     private LinearLayout cancel, clear;
+    private RelativeLayout dialogRelativeLayout;
 
-    private TextView txtEmpty, txtDelTime;
+    private TextView txtEmpty, txtDelTime, txtDialogWarn, txtCancel, txtClear;
 
     //return previous activity if back is pressed
     @Override
@@ -64,10 +62,15 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
         historyRecyView = findViewById(R.id.deleteItemsRecView);
         txtDelTime = findViewById(R.id.txtDeleteTime);
         deleteAllFAB = findViewById(R.id.deletAllFAB);
-        dialog = new Dialog(HistoryScreen.this);
+        Dialog dialog = createDialogBox();
+
+        dialogRelativeLayout = dialog.findViewById(R.id.dialogRLayout);
 
         //set icons white on Dark mode On
-        setIconsWhite();
+        setIconsOnDarkMode();
+
+        //remove items over 24hrs
+        itemController.removeOverstayHistory(HistoryScreen.this);
 
         //method to set history items
         itemController.allHistoryItemAdded(HistoryScreen.this);
@@ -78,20 +81,14 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
             @Override
             public void onClick(View view) {
                 if (itemController.historySize() != 0){
-
-                    Dialog deleteDialog = createDialogBox(dialog);
-                    deleteDialog.show();
-
-                    //initialize dialog buttons here
-                    cancel = deleteDialog.findViewById(R.id.linearCancel);
-                    clear = deleteDialog.findViewById(R.id.linearClear);
+                    dialog.show();
 
                     //click listeners
 
                     cancel.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            deleteDialog.dismiss();
+                            dialog.dismiss();
                         }
                     });
 
@@ -136,7 +133,7 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
         }
 
         //call swipe to undo method here
-        undoItem(historyRecyView, imgBag, txtEmpty);
+        undoItem(historyRecyView);
     }
 
     //set adapter items
@@ -184,15 +181,24 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
         txtDelTime.setVisibility(View.VISIBLE);
     }
 
-    //create dialog box
-    public Dialog createDialogBox(Dialog dialog){
+    //create dialog box method
+    public Dialog createDialogBox(){
+        Dialog dialog = new Dialog(HistoryScreen.this);
         dialog.setContentView(R.layout.confirm_delete_layout);
         dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(AppCompatResources.getDrawable(HistoryScreen.this, R.drawable.dialog_inset));
         dialog.setCancelable(true);
+
+        txtDialogWarn = dialog.findViewById(R.id.txtConfirmDelete);
+        //initialize dialog buttons here
+        cancel = dialog.findViewById(R.id.linearCancel);
+        clear = dialog.findViewById(R.id.linearClear);
+        txtCancel = dialog.findViewById(R.id.txtCancel);
+        txtClear = dialog.findViewById(R.id.txtClear);
         return dialog;
     }
 
-    private void undoItem(RecyclerView historyRecyView, ImageView imgBag, TextView txtEmpty){
+    private void undoItem(RecyclerView historyRecyView){
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(new ItemTouchHelper.Callback() {
             @Override
             public int getMovementFlags(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder) {
@@ -232,10 +238,22 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
 
 
     @Override
-    public void setIconsWhite() {
+    public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
             backBTN.setImageDrawable(AppCompatResources.getDrawable(HistoryScreen.this, R.drawable.back_white));
+            dialogRelativeLayout.setBackgroundColor(getResources().getColor(R.color.dialog_grey));
+            //set text colours white
+            txtCancel.setTextColor(getResources().getColor(R.color.white));
+            txtClear.setTextColor(getResources().getColor(R.color.white));
+            txtDialogWarn.setTextColor(getResources().getColor(R.color.white));
         }
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        //remove items over 24hrs
+        itemController.removeOverstayHistory(HistoryScreen.this);
     }
 }

@@ -101,20 +101,6 @@ public class Database extends SQLiteOpenHelper{
     * after item has reached 24hr
     * delete item using received id
     * TODO: this method will handle deletes after 24hrs*/
-    public boolean deleteHistoryAfterHoursExceed(DeletedItemModel historyModel){
-
-        SQLiteDatabase removeItem = this.getWritableDatabase();
-        String itemID = historyModel.getId();
-        long timeAdded = historyModel.getTimeDeleted();
-
-        long currentTime = System.currentTimeMillis(); // current system time
-        long timeDiff = 24 * 60 * 60 * 1000; // total milli seconds for 24hrs
-        long timeSubtract = currentTime - timeDiff;
-
-        String query = "" + timeAdded + " < " + timeSubtract;
-
-        return removeItem.delete(historyTable, query + " = ? ", new String[]{String.valueOf(currentTime - timeDiff)}) > 0;
-    }
 
     /*
     * clear all history items*/

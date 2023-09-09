@@ -2,13 +2,19 @@ package controller;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.ehdeeCodes.shoppyapp.R;
 import com.ehdeeCodes.shoppyapp.adapters.HistoryAdapter;
 import com.ehdeeCodes.shoppyapp.adapters.ItemAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -232,6 +238,21 @@ public class ItemController extends ViewModel {
         modelDB.clearHistory(context);
         historyAdapter.clearAllItems();
 
+    }
+
+    //remove item after 24hrs
+    public void removeOverstayHistory(Context context){
+        HistoryItemDuration historyItem = new HistoryItemDuration(); //this class handles time item was added compared to current system time
+
+        for (int i = 0; i <historyList().size(); i++) {
+            long timeSpent = historyList().get(i).getTimeDeleted();
+
+            boolean moreThan24hrs = historyItem.compareTime(timeSpent);
+
+            if (moreThan24hrs){
+                removeHistoryItem(historyModelReturned(i), context, historyList().get(i).getId());
+            }
+        }
     }
 
 }

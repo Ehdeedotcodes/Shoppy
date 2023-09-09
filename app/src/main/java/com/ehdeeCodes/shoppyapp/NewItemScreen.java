@@ -55,7 +55,7 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
         descBackground = findViewById(R.id.linearDesc);
 
         //set icons white on dark mode
-        setIconsWhite();
+        setIconsOnDarkMode();
 
         backBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -127,7 +127,7 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
     }
 
     @Override
-    public void setIconsWhite() {
+    public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
             backBTN.setImageDrawable(AppCompatResources.getDrawable(NewItemScreen.this, R.drawable.back_white));
