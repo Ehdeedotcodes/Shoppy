@@ -32,8 +32,6 @@ public class ItemController extends ViewModel {
     //adapters here
     private final ItemAdapter itemAdapter = new ItemAdapter();
     private final HistoryAdapter historyAdapter = new HistoryAdapter();
-    private List<Integer> IDs = new ArrayList<>();
-    private int newID;
 
     public String itemUUID (){
         UUID itemID = UUID.randomUUID();
@@ -128,11 +126,6 @@ public class ItemController extends ViewModel {
         modelDB.setHistoryList(context);
     }
 
-    public boolean historyItemSize(){
-        return modelDB.isHistoryListEmpty();
-    }
-
-    public int itemsSize(){return modelDB.itemListSize();}
     public int historySize(){
         return modelDB.historyListSize();
     }
@@ -144,11 +137,9 @@ public class ItemController extends ViewModel {
         if (itemRemoved){
             modelDB.removeItemFromList(itemRemoveUUID);
             updateAdapterOnDel();
-            Toast.makeText(context.getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
             return true;
         }
         else {
-            Toast.makeText(context.getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -160,11 +151,9 @@ public class ItemController extends ViewModel {
         if (itemRemoved){
             modelDB.removeHistoryItemFromList(itemRemoveUUID);
             updateHistAdapterOnDel();
-            Toast.makeText(context.getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
             return true;
         }
         else {
-            Toast.makeText(context.getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -191,11 +180,6 @@ public class ItemController extends ViewModel {
     //get adapter item size
     public int getHistoryItems(){
         return itemAdapter.getItemCount();
-    }
-
-    //removeItem ID on delete
-    public void removeIDAt(int position){
-        IDs.remove(position);
     }
 
     /*
