@@ -7,9 +7,10 @@
     <color name="app_dark_blue">#2B889B</color>
     <color name="item_bg_color">#E4FFEE</color>
     <color name="edit_icon_bg">#C9E9D5</color>
+    <color name="grey_white">#F1F1F1</color>
     <color name="remove_btn_red">#FF0A0A</color>
     <color name="chip_color">#2BD9D9D9</color>
-    <color name="light_grey">#80EFEFEF</color>
+    <color name="light_grey">#80CDCDCD</color>
     <color name="light_red">#40FF0A0A</color>
     <color name="green">#026B0D</color>
 
@@ -18,7 +19,9 @@
     <color name="dark_bg_color">#001114</color>
     <color name="item_color_dark">#992FA25E</color>
     <color name="desc_bg_dark">#993A4548</color>
+    <color name="bg_dark_light">#99506064</color>
     <color name="edit_icon_dark">#2E7F4F</color>
     <color name="purchase_green">#00FF1B</color>
     <color name="dark_grey">#809D9C9C</color>
+    <color name="dialog_grey">#506064</color>
 </resources>

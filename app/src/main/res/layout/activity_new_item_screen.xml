@@ -68,7 +68,8 @@
             android:hint="@string/item_name_two"
             android:fontFamily="@font/segoe_ui"
             android:maxLength="18"
-            android:inputType="text"/>
+            android:inputType="text"
+            android:maxLines="1"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -89,7 +90,9 @@
             android:layout_height="wrap_content"
             android:hint="@string/txt_price"
             android:fontFamily="@font/segoe_ui"
-            android:inputType="number"/>
+            android:inputType="number"
+            android:maxLines="1"
+            android:maxLength="7"/>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -122,6 +125,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/txt_add_description"
             android:background="@android:color/transparent"
+            android:inputType="text"
             android:maxLines="5"
             android:fontFamily="@font/segoe_ui"/>
 

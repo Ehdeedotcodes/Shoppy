@@ -162,7 +162,8 @@
                 android:layout_marginEnd="7dp"
                 android:layout_below="@id/linearTotal"
                 android:layout_marginTop="24dp"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:overScrollMode="never"/>
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
@@ -176,6 +177,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="44dp"
         style="@style/fab_bg"
+        app:layout_behavior="controller.HideFabOnScroll"
         android:src="@drawable/add_ic"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

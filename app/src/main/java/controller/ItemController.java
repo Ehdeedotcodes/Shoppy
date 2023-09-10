@@ -2,13 +2,19 @@ package controller;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.ehdeeCodes.shoppyapp.R;
 import com.ehdeeCodes.shoppyapp.adapters.HistoryAdapter;
 import com.ehdeeCodes.shoppyapp.adapters.ItemAdapter;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +32,6 @@ public class ItemController extends ViewModel {
     //adapters here
     private final ItemAdapter itemAdapter = new ItemAdapter();
     private final HistoryAdapter historyAdapter = new HistoryAdapter();
-    private List<Integer> IDs = new ArrayList<>();
-    private int newID;
 
     public String itemUUID (){
         UUID itemID = UUID.randomUUID();
@@ -122,11 +126,6 @@ public class ItemController extends ViewModel {
         modelDB.setHistoryList(context);
     }
 
-    public boolean historyItemSize(){
-        return modelDB.isHistoryListEmpty();
-    }
-
-    public int itemsSize(){return modelDB.itemListSize();}
     public int historySize(){
         return modelDB.historyListSize();
     }
@@ -138,11 +137,9 @@ public class ItemController extends ViewModel {
         if (itemRemoved){
             modelDB.removeItemFromList(itemRemoveUUID);
             updateAdapterOnDel();
-            Toast.makeText(context.getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
             return true;
         }
         else {
-            Toast.makeText(context.getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -154,11 +151,9 @@ public class ItemController extends ViewModel {
         if (itemRemoved){
             modelDB.removeHistoryItemFromList(itemRemoveUUID);
             updateHistAdapterOnDel();
-            Toast.makeText(context.getApplicationContext(), "true", Toast.LENGTH_SHORT).show();
             return true;
         }
         else {
-            Toast.makeText(context.getApplicationContext(), "false", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -185,11 +180,6 @@ public class ItemController extends ViewModel {
     //get adapter item size
     public int getHistoryItems(){
         return itemAdapter.getItemCount();
-    }
-
-    //removeItem ID on delete
-    public void removeIDAt(int position){
-        IDs.remove(position);
     }
 
     /*
@@ -232,6 +222,21 @@ public class ItemController extends ViewModel {
         modelDB.clearHistory(context);
         historyAdapter.clearAllItems();
 
+    }
+
+    //remove item after 24hrs
+    public void removeOverstayHistory(Context context){
+        HistoryItemDuration historyItem = new HistoryItemDuration(); //this class handles time item was added compared to current system time
+
+        for (int i = 0; i <historyList().size(); i++) {
+            long timeSpent = historyList().get(i).getTimeDeleted();
+
+            boolean moreThan24hrs = historyItem.compareTime(timeSpent);
+
+            if (moreThan24hrs){
+                removeHistoryItem(historyModelReturned(i), context, historyList().get(i).getId());
+            }
+        }
     }
 
 }

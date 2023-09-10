@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/dialog_bg">
+    android:id="@+id/dialogRLayout"
+    android:background="@color/grey_white"
+    android:elevation="7dp">
 
     <ImageView
         android:id="@+id/ivBin"
@@ -21,7 +23,10 @@
         android:layout_below="@id/ivBin"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="18dp"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:fontFamily="@font/segoe_ui"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
 
     <View
         android:id="@+id/topLine"
@@ -41,7 +46,7 @@
         android:orientation="horizontal"
         android:layout_below="@id/topLine"
         android:paddingHorizontal="24dp"
-        android:paddingVertical="7dp"
+        android:paddingVertical="3dp"
         android:layout_marginTop="12dp"
         android:layout_marginBottom="12dp"
         android:gravity="center_horizontal"
@@ -58,9 +63,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/txtClear"
                 android:text="@string/txt_clear"
                 android:textSize="16sp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:fontFamily="@font/segoe_ui"/>
 
         </LinearLayout>
 
@@ -80,9 +88,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:id="@+id/txtCancel"
                 android:text="@string/txt_cancel"
                 android:textSize="16sp"
-                android:background="@android:color/transparent"/>
+                android:background="@android:color/transparent"
+                android:textColor="@color/black"
+                android:fontFamily="@font/segoe_ui"/>
 
         </LinearLayout>
 

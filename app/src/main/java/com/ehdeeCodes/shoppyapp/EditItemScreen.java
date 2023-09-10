@@ -2,23 +2,18 @@ package com.ehdeeCodes.shoppyapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import controller.ItemController;
-import model.ItemModel;
 
 public class EditItemScreen extends AppCompatActivity implements DarkMode{
 
@@ -55,7 +50,7 @@ public class EditItemScreen extends AppCompatActivity implements DarkMode{
         descBackground = findViewById(R.id.linearDesc);
 
         // set icons white on dark mode On
-        setIconsWhite();
+        setIconsOnDarkMode();
 
         // on click to save edits made to items
         saveEditBTN.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +112,7 @@ public class EditItemScreen extends AppCompatActivity implements DarkMode{
     }
 
     @Override
-    public void setIconsWhite() {
+    public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
             edtScreenBackBTN.setImageDrawable(AppCompatResources.getDrawable(EditItemScreen.this, R.drawable.back_white));

@@ -57,7 +57,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
         descBackground = findViewById(R.id.linearDesc);
 
         //set icons white on dark mode On
-        setIconsWhite();
+        setIconsOnDarkMode();
 
         //method to set items in view
         setItemDetails(itemName, itemPrice, itemDesc);
@@ -111,7 +111,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
     }
 
     @Override
-    public void setIconsWhite() {
+    public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
             itemViewBackBTN.setImageDrawable(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.back_white));
