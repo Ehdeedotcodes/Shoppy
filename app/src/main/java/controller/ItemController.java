@@ -76,7 +76,7 @@ public class ItemController extends ViewModel {
     public String getItemDesc(){
         int receivedPosition = itemAdapter.getClickedAdapterPosition();
 
-        Log.d("clicked", "getItemDesc: " + itemAdapter.getClickedAdapterPosition());
+//        Log.d("clicked", "getItemDesc: " + itemAdapter.getClickedAdapterPosition());
         return modelDB.getItemDec(receivedPosition);
     }
     /*methods to return itemID
@@ -169,10 +169,10 @@ public class ItemController extends ViewModel {
         historyAdapter.notifyDataSetChanged();
     }
 
-    //get adapter item size
-    public int getHistoryItems(){
-        return itemAdapter.getItemCount();
-    }
+//    //get adapter item size
+//    public int getHistoryItems(){
+//        return itemAdapter.getItemCount();
+//    }
 
     /*
     * methods to update item:

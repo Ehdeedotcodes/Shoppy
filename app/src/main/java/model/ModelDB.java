@@ -189,10 +189,10 @@ public class ModelDB implements ModelInterface{
 
         boolean successDEL = database.deleteItem(itemModel);
         if (successDEL){
-            Log.d("del stats from model", "item removed");
+//            Log.d("del stats from model", "item removed");
             return true;
         }else {
-            Log.d("del stats from model", "remove failed");
+//            Log.d("del stats from model", "remove failed");
             return false;
         }
     }

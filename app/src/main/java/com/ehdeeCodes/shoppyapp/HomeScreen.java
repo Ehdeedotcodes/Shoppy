@@ -122,7 +122,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
         //method to remove item on swipe of recycler view item
         removeItem(itemRecView, txtTotalItems, txtTotalPrice, txtEmptyState, imgEmptyState);
 
-        Log.d("dbList Size", "value: " + itemController.amountOfItems());
+//        Log.d("dbList Size", "value: " + itemController.amountOfItems());
 
         historyBTN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,7 +185,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
             itemsCount.setText(R.string.item_count_zero);
             price.setText(R.string.price_zero);
 
-            Log.d("itemTable size", "bool: " + itemController.isItemListEmpty());
+//            Log.d("itemTable size", "bool: " + itemController.isItemListEmpty());
 
             return false;
         }else {
@@ -195,7 +195,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
             setItemCounts(itemsCount);
             setItemPrice(price);
 
-            Log.d("itemTable size", "bool: " + itemController.isItemListEmpty());
+//            Log.d("itemTable size", "bool: " + itemController.isItemListEmpty());
 
             return true;
         }
@@ -216,15 +216,21 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
     //set items count to screen
     public void setItemCounts(TextView totalItems){
         String txtPriceTotal = String.valueOf(itemController.amountOfItems());
+        int limit = 6; //limit for itemCount text length
         totalItems.setText(txtPriceTotal);
+
+        //show plus icon if text max length reached
+        showPlusSign(totalItems, txtPricePlus, limit);
     }
 
     //set items price to screen
     public void setItemPrice(TextView price){
         String txtPriceTotal = String.valueOf(itemController.priceTotal());
+        int limit = 7; //limit for price text length
         price.setText(txtPriceTotal);
 
         //show plus icon if text max length reached
+        showPlusSign(price, txtPricePlus, limit);
     }
 
     //check if price display limit reached then show plus sign
@@ -264,7 +270,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
 
                 if (validDelete){
                     itemController.addToHistory(itemID, itemName, itemPrice, timeDeleted, itemDesc);
-                    Log.d("item description", "onSwiped: " + itemDesc);
+//                    Log.d("item description", "onSwiped: " + itemDesc);
                 }
 
                 itemAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
@@ -273,9 +279,9 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
                 setItemPrice(priceTotal);
                 setItemCounts(amountOfItems);
 
-                //show plus icon if price still exceed 7 digits and item exceed 6
-                showPlusSign(txtTotalPrice, txtPricePlus, 7);
-                showPlusSign(txtTotalItems, txtItemsPlus, 6);
+//                //show plus icon if price still exceed 7 digits and item exceed 6
+//                showPlusSign(txtTotalPrice, txtPricePlus, 7);
+//                showPlusSign(txtTotalItems, txtItemsPlus, 6);
 
                 //check if screen is empty to show empty screen
                 if (itemController.isItemListEmpty()){

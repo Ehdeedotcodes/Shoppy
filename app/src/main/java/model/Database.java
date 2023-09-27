@@ -79,7 +79,7 @@ public class Database extends SQLiteOpenHelper{
         SQLiteDatabase database = Database.this.getWritableDatabase();
         String uuid = itemModel.getID();
 
-        Log.d("itemModId", "itemId " + uuid);
+//        Log.d("itemModId", "itemId " + uuid);
 
         String query = "" + itemID + " = " + itemModel.getID();
 
@@ -91,7 +91,7 @@ public class Database extends SQLiteOpenHelper{
         SQLiteDatabase database = Database.this.getWritableDatabase();
         String uuid = deletedItemModel.getId();
 
-        Log.d("itemModId", "itemId " + uuid);
+//        Log.d("itemModId", "itemId " + uuid);
 
         String query = "" + itemID + " = " + deletedItemModel.getId();
 
