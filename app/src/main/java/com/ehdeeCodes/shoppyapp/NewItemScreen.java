@@ -21,10 +21,10 @@ import controller.ItemController;
 
 public class NewItemScreen extends AppCompatActivity implements DarkMode{
 
-    private ImageView backBTN;
     private EditText edtItemName, edtPrice, edtDescription;
     private Button addBTN;
-    private LinearLayout descBackground;
+    private LinearLayout descBackground, backBTN;
+    private ImageView ivBackArrow;
 
     ViewModelProvider viewModelProvider;
     ItemController itemController;
@@ -44,6 +44,7 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_item_screen);
 
+        //binding to UI components
         viewModelProvider = new ViewModelProvider(NewItemScreen.this);
         itemController = viewModelProvider.get(ItemController.class);
 
@@ -53,6 +54,7 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
         edtDescription = findViewById(R.id.descEditText);
         addBTN = findViewById(R.id.btnAdd);
         descBackground = findViewById(R.id.linearDesc);
+        ivBackArrow = findViewById(R.id.nitBackArrow);
 
         //set icons white on dark mode
         setIconsOnDarkMode();
@@ -73,13 +75,14 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
                 String itemName = edtItemName.getText().toString();
                 String price = edtPrice.getText().toString();
                 String txtDesc = edtDescription.getText().toString();
+                long timePlaced = itemController.timeStamp();
 
                 if (!isItemNameEmpty(edtItemName) && !isItemPriceEmpty(edtPrice) && !isDescEmpty(edtDescription)){
 //                    addItem(itemName, price, txtDesc);
 
                     String itemUUID = itemController.itemUUID();
 
-                    boolean successAdd = itemController.addNewItem( itemUUID,itemName, price, txtDesc, NewItemScreen.this); // setting a new item to database here
+                    boolean successAdd = itemController.addNewItem( itemUUID,itemName, price, txtDesc, timePlaced,NewItemScreen.this); // setting a new item to database here
 
                     if (successAdd){
                         Log.d("add stats", "add success");
@@ -130,7 +133,7 @@ public class NewItemScreen extends AppCompatActivity implements DarkMode{
     public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
-            backBTN.setImageDrawable(AppCompatResources.getDrawable(NewItemScreen.this, R.drawable.back_white));
+            ivBackArrow.setImageDrawable(AppCompatResources.getDrawable(NewItemScreen.this, R.drawable.back_white));
             descBackground.setBackground(AppCompatResources.getDrawable(NewItemScreen.this, R.drawable.grey_bg_dark));
         }
     }

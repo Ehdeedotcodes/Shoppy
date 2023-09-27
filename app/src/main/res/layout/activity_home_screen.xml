@@ -2,10 +2,10 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/app_backgrounds"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    style="@style/app_backgrounds">
+    tools:context=".MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -17,9 +17,9 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
+                style="@style/app_backgrounds"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/app_backgrounds">
+                android:layout_height="match_parent">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -30,19 +30,29 @@
                         android:id="@+id/homeHeadAppName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/load_screen_name"
+                        android:layout_marginTop="7dp"
                         android:fontFamily="@font/segoe_ui_bold_italic"
-                        android:textSize="25sp"
-                        android:textColor="@color/app_blue"/>
+                        android:text="@string/load_screen_name"
+                        android:textColor="@color/app_blue"
+                        android:textSize="25sp" />
 
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
+                    <LinearLayout
                         android:id="@+id/btnHistory"
-                        android:src="@drawable/refresh"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
+                        android:layout_marginTop="7dp"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginTop="7dp"/>
+                        android:background="@drawable/icons_backdrop"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:id="@+id/hsBackArrow"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/refresh" />
+
+                    </LinearLayout>
 
                 </RelativeLayout>
             </androidx.appcompat.widget.Toolbar>
@@ -51,8 +61,8 @@
                 android:id="@+id/appBarBottomLine"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:background="@color/light_grey"
-                android:layout_gravity="bottom"/>
+                android:layout_gravity="bottom"
+                android:background="@color/light_grey" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -72,10 +82,10 @@
                 android:id="@+id/homeScreenEmptyState"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
-                android:src="@drawable/bag_two"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="200dp"
-                android:visibility="visible"/>
+                android:src="@drawable/bag_two"
+                android:visibility="visible" />
 
             <TextView
                 android:id="@+id/txtEmptyState"
@@ -84,40 +94,52 @@
                 android:layout_below="@id/homeScreenEmptyState"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:text="@string/txt_empty_state_home"
                 android:layout_marginTop="18sp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/segoe_ui"
+                android:text="@string/txt_empty_state_home"
+                android:textAlignment="center"
                 android:textSize="16sp"
-                android:visibility="visible"/>
+                android:visibility="visible" />
 
             <LinearLayout
                 android:id="@+id/linearTotal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:orientation="horizontal"
-                android:background="@drawable/chips_bg"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginStart="24dp">
+                android:background="@drawable/chips_bg"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/txtTotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/segoe_ui"
                     android:text="@string/txt_total"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/segoe_ui"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/totalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:text="@string/total_price"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/segoe_ui"/>
+                    android:ellipsize="marquee"
+                    android:fontFamily="@font/segoe_ui"
+                    android:maxLength="7"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtPlusSign"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="+"
+                    android:visibility="gone" />
+
 
             </LinearLayout>
 
@@ -125,30 +147,38 @@
                 android:id="@+id/linearItemCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:orientation="horizontal"
-                android:background="@drawable/chips_bg"
-                android:layout_marginTop="24dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="24dp">
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/chips_bg"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <TextView
                     android:id="@+id/totalItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
-                    android:text="@string/total_items"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/segoe_ui"/>
+                    android:fontFamily="@font/segoe_ui"
+                    android:maxLength="6"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/txtPlusSignItems"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:text="+"
+                    android:visibility="gone" />
 
                 <TextView
                     android:id="@+id/txtItems"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
+                    android:fontFamily="@font/segoe_ui"
                     android:text="@string/txt_items"
-                    android:textSize="16sp"
-                    android:fontFamily="@font/segoe_ui"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -158,26 +188,26 @@
                 android:id="@+id/itemsRecView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="7dp"
-                android:layout_marginEnd="7dp"
                 android:layout_below="@id/linearTotal"
+                android:layout_marginStart="7dp"
                 android:layout_marginTop="24dp"
-                android:visibility="gone"
-                android:overScrollMode="never"/>
+                android:layout_marginEnd="7dp"
+                android:overScrollMode="never"
+                android:visibility="gone" />
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFAB"
+        style="@style/fab_bg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="44dp"
-        style="@style/fab_bg"
-        app:layout_behavior="controller.HideFabOnScroll"
-        android:src="@drawable/add_ic"/>
+        android:src="@drawable/add_ic"
+        app:layout_behavior="controller.HideFabOnScroll" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

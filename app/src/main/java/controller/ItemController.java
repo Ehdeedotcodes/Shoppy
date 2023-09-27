@@ -2,21 +2,13 @@ package controller;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.ehdeeCodes.shoppyapp.R;
 import com.ehdeeCodes.shoppyapp.adapters.HistoryAdapter;
 import com.ehdeeCodes.shoppyapp.adapters.ItemAdapter;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -41,13 +33,13 @@ public class ItemController extends ViewModel {
 
     /*get time item was deleted method
     * which collects time and binds it to item going to history DB*/
-    public Long timeItemDeleted(){
+    public Long timeStamp(){
         return System.currentTimeMillis();
     }
 
     //method to add new item
-    public boolean addNewItem(String id, String itemName, String price, String desc, Context context){
-        boolean successAdd = modelDB.addItem(id, itemName, price, desc, context);
+    public boolean addNewItem(String id, String itemName, String price, String desc, long timeAdded, Context context){
+        boolean successAdd = modelDB.addItem(id, itemName, price, desc, timeAdded, context);
 
         if (!successAdd){
             return false;
@@ -144,7 +136,7 @@ public class ItemController extends ViewModel {
         }
     }
 
-    //method to remove item from history after 24hrs
+    //method to remove item from history
     public boolean removeHistoryItem(DeletedItemModel deletedItemModel, Context context, String itemRemoveUUID){
         boolean itemRemoved = modelDB.removeHistoryItem(deletedItemModel, context);
 
@@ -224,19 +216,41 @@ public class ItemController extends ViewModel {
 
     }
 
-    //remove item after 24hrs
-    public void removeOverstayHistory(Context context){
-        HistoryItemDuration historyItem = new HistoryItemDuration(); //this class handles time item was added compared to current system time
+    //remove history item after 24hrs
+    public boolean removeOverstayHistory(Context context){
+        ItemDuration historyItem = new ItemDuration(); //this class handles time item was added compared to current system time
 
         for (int i = 0; i <historyList().size(); i++) {
             long timeSpent = historyList().get(i).getTimeDeleted();
 
-            boolean moreThan24hrs = historyItem.compareTime(timeSpent);
+            boolean moreThan24hrs = historyItem.compareTime(timeSpent, 1);
 
             if (moreThan24hrs){
                 removeHistoryItem(historyModelReturned(i), context, historyList().get(i).getId());
+                updateHistAdapterOnDel();
+                return true;
             }
         }
+        return false;
+    }
+
+    //remove history item after 24hrs
+    public boolean removeOverstayItem(Context context){
+        ItemDuration itemDuration = new ItemDuration(); //this class handles time item was added compared to current system time
+
+        for (int i = 0; i < itemList().size(); i++) {
+            long timeAdded = itemList().get(i).getTimeAdded();
+
+            boolean moreThan7days = itemDuration.compareTime(timeAdded, 7);
+
+            if (moreThan7days){
+                removeItemFromTable(itemModelReturned(i), context, itemList().get(i).getID());
+                updateAdapterOnDel();
+                return true;
+            }
+        }
+
+        return false;
     }
 
 }

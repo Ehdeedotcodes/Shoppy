@@ -30,11 +30,21 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp">
 
+            <LinearLayout
+                android:id="@+id/newItemBackArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/icons_backdrop"
+                android:layout_gravity="center_vertical">
+
                 <ImageView
-                    android:id="@+id/newItemBackArrow"
+                    android:id="@+id/nitBackArrow"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/back"/>
+
+            </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -42,7 +52,8 @@
                     android:text="@string/head_new_items"
                     android:layout_marginStart="42dp"
                     android:textSize="18sp"
-                    android:fontFamily="@font/segoe_ui_bold"/>
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:layout_gravity="center_vertical"/>
 
             </LinearLayout>
 
@@ -125,8 +136,10 @@
             android:layout_height="wrap_content"
             android:hint="@string/txt_add_description"
             android:background="@android:color/transparent"
-            android:inputType="text"
-            android:maxLines="5"
+            android:inputType="textMultiLine"
+            android:lines="10"
+            android:gravity="top"
+            android:scrollHorizontally="false"
             android:fontFamily="@font/segoe_ui"/>
 
     </LinearLayout>

@@ -1,22 +1,16 @@
 package controller;
 
-import android.util.Log;
-
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.ArrayList;
-import java.util.List;
 
-import model.DeletedItemModel;
-
-public class HistoryItemDuration {
+public class ItemDuration {
     private Instant then, now;
 
-    public HistoryItemDuration(){}
+    public ItemDuration(){}
 
     //method to check duration between two times
-    public boolean compareTime(Long timeAdded){
+    public boolean compareTime(Long timeAdded, int daysToSpent){
         Duration duration;
         long days = 0;
 
@@ -30,6 +24,6 @@ public class HistoryItemDuration {
             days = duration.toDays();
 
         }
-        return days >= 1;
+        return days >= daysToSpent;
     }
 }

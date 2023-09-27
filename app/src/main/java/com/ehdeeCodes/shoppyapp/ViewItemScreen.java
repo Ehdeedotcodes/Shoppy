@@ -21,14 +21,14 @@ import model.ItemModel;
 
 public class ViewItemScreen extends AppCompatActivity implements DarkMode{
 
-    private ImageView itemViewBackBTN;
+    private ImageView ivBackArrow;
     private TextView itemName, itemPrice, itemDesc;
     private Button removeItemBTN;
     private ViewModelProvider viewModelProvider;
     private ItemController itemController;
     private ItemModel itemModel = new ItemModel();
     private ItemAdapter itemAdapter = new ItemAdapter();
-    private LinearLayout descBackground;
+    private LinearLayout descBackground, itemViewBackBTN;
 
     private int itemPosition;
 
@@ -55,6 +55,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
         itemDesc = findViewById(R.id.tvItemDesc);
         removeItemBTN = findViewById(R.id.btnRemove);
         descBackground = findViewById(R.id.linearDesc);
+        ivBackArrow = findViewById(R.id.ivScreenBackArrow);
 
         //set icons white on dark mode On
         setIconsOnDarkMode();
@@ -67,7 +68,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
             @Override
             public void onClick(View view) {
                 String itemID = itemController.getItemID(itemPosition);
-                long timeDeleted = itemController.timeItemDeleted();
+                long timeDeleted = itemController.timeStamp();
                 String itemName = itemController.getName(itemPosition);
                 String itemPrice = itemController.getPrice(itemPosition);
                 String itemDesc = itemController.getDesc(itemPosition);
@@ -114,7 +115,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
     public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
-            itemViewBackBTN.setImageDrawable(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.back_white));
+            ivBackArrow.setImageDrawable(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.back_white));
             descBackground.setBackground(AppCompatResources.getDrawable(ViewItemScreen.this, R.drawable.grey_bg_dark));
         }
     }

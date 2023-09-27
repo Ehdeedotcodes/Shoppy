@@ -17,10 +17,11 @@ import controller.ItemController;
 
 public class EditItemScreen extends AppCompatActivity implements DarkMode{
 
-    private ImageView edtScreenBackBTN;
+    private LinearLayout edtScreenBackBTN;
     private EditText itemName, itemPrice, itemDesc;
     private Button saveEditBTN;
     private LinearLayout descBackground;
+    private ImageView ivBackArrow;
 
     private ViewModelProvider viewModelProvider;
     private ItemController itemController;
@@ -48,6 +49,7 @@ public class EditItemScreen extends AppCompatActivity implements DarkMode{
         itemDesc = findViewById(R.id.descEditText);
         saveEditBTN = findViewById(R.id.btnSaveEdit);
         descBackground = findViewById(R.id.linearDesc);
+        ivBackArrow = findViewById(R.id.esBackArrow);
 
         // set icons white on dark mode On
         setIconsOnDarkMode();
@@ -115,7 +117,7 @@ public class EditItemScreen extends AppCompatActivity implements DarkMode{
     public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
-            edtScreenBackBTN.setImageDrawable(AppCompatResources.getDrawable(EditItemScreen.this, R.drawable.back_white));
+            ivBackArrow.setImageDrawable(AppCompatResources.getDrawable(EditItemScreen.this, R.drawable.back_white));
             descBackground.setBackground(AppCompatResources.getDrawable(EditItemScreen.this, R.drawable.grey_bg_dark));
         }
     }

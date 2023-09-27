@@ -28,13 +28,13 @@ import model.DeletedItemModel;
 
 public class HistoryScreen extends AppCompatActivity implements DarkMode{
 
-    private ImageView backBTN, imgBag;
+    private ImageView  imgBag, ivBackArrow;
     private final HistoryAdapter historyAdapter = new HistoryAdapter(HistoryScreen.this);
     private ItemController itemController;
     private ViewModelProvider viewModelProvider;
     private RecyclerView historyRecyView;
     private FloatingActionButton deleteAllFAB;
-    private LinearLayout cancel, clear;
+    private LinearLayout cancel, clear,  backBTN;
     private RelativeLayout dialogRelativeLayout;
 
     private TextView txtEmpty, txtDelTime, txtDialogWarn, txtCancel, txtClear;
@@ -62,6 +62,7 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
         historyRecyView = findViewById(R.id.deleteItemsRecView);
         txtDelTime = findViewById(R.id.txtDeleteTime);
         deleteAllFAB = findViewById(R.id.deletAllFAB);
+        ivBackArrow =findViewById(R.id.hisBackArrow);
         Dialog dialog = createDialogBox();
 
         dialogRelativeLayout = dialog.findViewById(R.id.dialogRLayout);
@@ -70,7 +71,11 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
         setIconsOnDarkMode();
 
         //remove items over 24hrs
-        itemController.removeOverstayHistory(HistoryScreen.this);
+        boolean itemRemovedOnOverStay = itemController.removeOverstayHistory(HistoryScreen.this);
+        // check if that is last item, then show empty screen
+        if (itemRemovedOnOverStay){
+            setEmptyState();
+        }
 
         //method to set history items
         itemController.allHistoryItemAdded(HistoryScreen.this);
@@ -219,11 +224,12 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
                 String itemPrice = deletedItemModel.getPrice();
                 String itemID = deletedItemModel.getId();
                 String itemDesc = deletedItemModel.getDescription();
+                long timePlaced = itemController.timeStamp();
 
                 boolean validDelete = itemController.removeHistoryItem(deletedItemModel, HistoryScreen.this, itemID);
 
                 if (validDelete){
-                    itemController.addNewItem(itemID, itemName, itemPrice, itemDesc, HistoryScreen.this);
+                    itemController.addNewItem(itemID, itemName, itemPrice, itemDesc, timePlaced,HistoryScreen.this);
                 }
 
                 historyAdapter.notifyItemRemoved(viewHolder.getAdapterPosition());
@@ -241,7 +247,7 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
     public void setIconsOnDarkMode() {
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
-            backBTN.setImageDrawable(AppCompatResources.getDrawable(HistoryScreen.this, R.drawable.back_white));
+            ivBackArrow.setImageDrawable(AppCompatResources.getDrawable(HistoryScreen.this, R.drawable.back_white));
             dialogRelativeLayout.setBackgroundColor(getResources().getColor(R.color.dialog_grey));
             //set text colours white
             txtCancel.setTextColor(getResources().getColor(R.color.white));

@@ -3,20 +3,21 @@ package model;
 import java.util.UUID;
 
 public class ItemModel {
-    String ID;
-    String Name;
-    String price;
-    String description;
+    private String ID;
+    private String Name;
+    private String price;
+    private String description;
+    private long timeAdded;
 
     String uuidString;
 
     //constructor
-    public ItemModel(String ID, String name, String price, String description) {
+    public ItemModel(String ID, String name, String price, String description, long timeAdded) {
         this.ID = ID;
         this.Name = name;
         this.price = price;
         this.description = description;
-
+        this.timeAdded = timeAdded;
     }
 
     //constructor
@@ -52,5 +53,9 @@ public class ItemModel {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public long getTimeAdded() {
+        return timeAdded;
     }
 }

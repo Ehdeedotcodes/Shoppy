@@ -29,11 +29,21 @@
                 android:paddingTop="16dp"
                 android:paddingBottom="16dp">
 
+            <LinearLayout
+                android:id="@+id/itemBackArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:background="@drawable/icons_backdrop"
+                android:layout_gravity="center_vertical">
+
                 <ImageView
-                    android:id="@+id/itemBackArrow"
+                    android:id="@+id/ivScreenBackArrow"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/back"/>
+
+            </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -41,7 +51,8 @@
                     android:text="@string/head_item_view"
                     android:layout_marginStart="42dp"
                     android:textSize="18sp"
-                    android:fontFamily="@font/segoe_ui_bold"/>
+                    android:fontFamily="@font/segoe_ui_bold"
+                    android:layout_gravity="center_vertical"/>
 
             </LinearLayout>
 

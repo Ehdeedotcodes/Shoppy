@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ehdeeCodes.shoppyapp.adapters.ItemAdapter;
@@ -25,10 +26,11 @@ import model.ItemModel;
 public class HomeScreen extends AppCompatActivity implements DarkMode{
 
     private FloatingActionButton addFAB;
-    private ImageView historyBTN, imgEmptyState;
+    private ImageView  imgEmptyState, ivBackArrow;
     private RecyclerView itemRecView;
-    private TextView txtEmptyState, txtTotalPrice, txtTotalItems;
+    private TextView txtEmptyState, txtTotalPrice, txtTotalItems, txtPricePlus, txtItemsPlus;
     private View appBarBottomLine;
+    private LinearLayout historyBTN;
 
     private ItemAdapter itemAdapter = new ItemAdapter(new ItemAdapter.startViewItemScreen() {
 
@@ -80,15 +82,40 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
         txtTotalPrice = findViewById(R.id.totalPrice);
         txtTotalItems = findViewById(R.id.totalItems);
         appBarBottomLine = findViewById(R.id.appBarBottomLine);
+        txtPricePlus = findViewById(R.id.txtPlusSign);
+        txtItemsPlus = findViewById(R.id.txtPlusSignItems);
+        ivBackArrow = findViewById(R.id.hsBackArrow);
 
         //set icons to white on Dark theme activated
         setIconsOnDarkMode();
 
-
-
+        //show plus icon if textView length of price and total items exceeds
+        showPlusSign(txtTotalPrice, txtPricePlus, 7);
+        showPlusSign(txtTotalItems, txtItemsPlus, 6);
 
         viewModelProvider = new ViewModelProvider(this);
         itemController = viewModelProvider.get(ItemController.class);
+
+        //delete item after 7 days and update Recycler view
+        boolean itemDelSuccessful = itemController.removeOverstayItem(HomeScreen.this);
+
+        if (itemDelSuccessful){
+            // methods to update price and amount of items
+            setItemPrice(txtTotalPrice);
+            setItemCounts(txtTotalItems);
+
+            //set plus icon to price total text and total items if it exceeds limit
+            //show plus icon if price still exceed 7 digits and item exceed 6
+            showPlusSign(txtTotalPrice, txtPricePlus, 7);
+            showPlusSign(txtTotalItems, txtItemsPlus, 6);
+
+            //if last item is deleted and list is empty then set empty screen
+            if (itemController.isItemListEmpty()){
+                //check if screen is empty to show empty screen
+                showEmptyState(imgEmptyState, txtEmptyState);
+            }
+
+        }
 
         //set items to list
         itemController.allItemsAdded(HomeScreen.this);
@@ -115,12 +142,6 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
             }
         });
 
-        itemRecView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                //TODO: work on scroll behavior to collapse FAB
-            }
-        });
 
         //setting empty state
         isItemsEmpty = checkIfListEmpty(imgEmptyState,txtTotalPrice, txtTotalItems, txtEmptyState);
@@ -140,7 +161,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
     public void setIconsOnDarkMode(){
         boolean isDarkThemeOn = ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES);
         if (isDarkThemeOn){
-            historyBTN.setImageDrawable(AppCompatResources.getDrawable(HomeScreen.this, R.drawable.history_white));
+            ivBackArrow.setImageDrawable(AppCompatResources.getDrawable(HomeScreen.this, R.drawable.history_white));
             appBarBottomLine.setBackgroundColor(getResources().getColor(R.color.dark_grey));
         }
     }
@@ -198,10 +219,21 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
         totalItems.setText(txtPriceTotal);
     }
 
-    //set items count to screen
+    //set items price to screen
     public void setItemPrice(TextView price){
         String txtPriceTotal = String.valueOf(itemController.priceTotal());
         price.setText(txtPriceTotal);
+
+        //show plus icon if text max length reached
+    }
+
+    //check if price display limit reached then show plus sign
+    public void showPlusSign(TextView textView, TextView plusIcon, int limit){
+        int textLength = textView.getText().length() + 1;
+        if (textLength >= limit){
+            plusIcon.setVisibility(View.VISIBLE);
+        }
+        else {plusIcon.setVisibility(View.GONE);}
     }
 
     // method to handle delete items of recycler view
@@ -226,7 +258,7 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
                 String itemName = itemController.getName(viewHolder.getAdapterPosition());
                 String itemPrice = itemController.getPrice(viewHolder.getAdapterPosition());
                 String itemDesc = itemController.getDesc(viewHolder.getAdapterPosition());
-                long timeDeleted = itemController.timeItemDeleted();
+                long timeDeleted = itemController.timeStamp();
 
                 boolean validDelete = itemController.removeItemFromTable(itemModel, HomeScreen.this, itemID);
 
@@ -240,6 +272,10 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
                 // methods to update price and amount of items
                 setItemPrice(priceTotal);
                 setItemCounts(amountOfItems);
+
+                //show plus icon if price still exceed 7 digits and item exceed 6
+                showPlusSign(txtTotalPrice, txtPricePlus, 7);
+                showPlusSign(txtTotalItems, txtItemsPlus, 6);
 
                 //check if screen is empty to show empty screen
                 if (itemController.isItemListEmpty()){

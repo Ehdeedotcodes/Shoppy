@@ -137,9 +137,9 @@ public class ModelDB implements ModelInterface{
 
 
     @Override
-    public boolean addItem(String id, String name, String price, String desc, Context context) {
+    public boolean addItem(String id, String name, String price, String desc, long timeAdded, Context context) {
         Database database = new Database(context);
-        ItemModel itemModel = new ItemModel(id, name, price, desc);
+        ItemModel itemModel = new ItemModel(id, name, price, desc, timeAdded);
         this.context = context;
 
         boolean successAdd = database.addNewItem(itemModel);

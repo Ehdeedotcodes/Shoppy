@@ -34,6 +34,7 @@ public class Database extends SQLiteOpenHelper{
         cv.put("NAME", itemModel.getName());
         cv.put("PRICE", itemModel.getPrice());
         cv.put("DESCRIPTION", itemModel.getDescription());
+        cv.put("TIMEPLACED", itemModel.getTimeAdded());
 
         long successAdd = newItem.insert(itemTable, null, cv);
 
@@ -172,8 +173,9 @@ public class Database extends SQLiteOpenHelper{
                 String itemName = cursor.getString(1);
                 int price = cursor.getInt(2);
                 String description = cursor.getString(3);
+                long timeAdded = cursor.getLong(4);
 
-                ItemModel itemModel = new ItemModel(itemID, itemName, String.valueOf(price), description);
+                ItemModel itemModel = new ItemModel(itemID, itemName, String.valueOf(price), description, timeAdded);
                 itemModel.setID(itemID);
 
                 //passing received result to list
@@ -240,7 +242,7 @@ public class Database extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        String createItemTable = "CREATE TABLE " + itemTable + " (" + itemID + " VARCHAR (50) PRIMARY KEY, NAME VARCHAR (40), PRICE INTEGER, DESCRIPTION VARCHAR (100))";
+        String createItemTable = "CREATE TABLE " + itemTable + " (" + itemID + " VARCHAR (50) PRIMARY KEY, NAME VARCHAR (40), PRICE INTEGER, DESCRIPTION VARCHAR (100), TIMEPLACED INTEGER)";
         String createHistoryTable = "CREATE TABLE " + historyTable + " (" + historyID + " VARCHAR (50) PRIMARY KEY, NAME VARCHAR (40), PRICE INTEGER, DESCRIPTION VARCHAR (100), TIMEPLACED INTEGER)";
 
         sqLiteDatabase.execSQL(createItemTable);
