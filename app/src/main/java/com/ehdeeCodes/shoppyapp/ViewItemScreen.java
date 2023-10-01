@@ -93,6 +93,7 @@ public class ViewItemScreen extends AppCompatActivity implements DarkMode{
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ViewItemScreen.this, HomeScreen.class));
+                overridePendingTransition(R.anim.anim_to_right, R.anim.anim_to_left);
                 finish();
             }
         });
