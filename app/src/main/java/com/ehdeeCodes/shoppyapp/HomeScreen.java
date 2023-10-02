@@ -138,6 +138,8 @@ public class HomeScreen extends AppCompatActivity implements DarkMode{
             public void onClick(View view) {
                 Intent intent = new Intent(HomeScreen.this, NewItemScreen.class);
                 startActivity(intent);
+                //animate from left
+                overridePendingTransition(R.anim.anim_to_bottom, R.anim.anim_to_top);
                 finish();
             }
         });

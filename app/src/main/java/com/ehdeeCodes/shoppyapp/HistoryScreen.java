@@ -121,6 +121,7 @@ public class HistoryScreen extends AppCompatActivity implements DarkMode{
             public void onClick(View view) {
                 Intent intent = new Intent(HistoryScreen.this, HomeScreen.class);
                 startActivity(intent);
+                overridePendingTransition(R.anim.anim_to_right, R.anim.anim_to_left);
                 finish();
             }
         });
